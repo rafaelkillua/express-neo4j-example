@@ -17,18 +17,18 @@ Caso queira mais informações, há uma **apresentação de slides** (link a def
 
 ### Modelagem do projeto
 
-Esse projeto consiste em 3 modelos (**Person**, **Expertise** e **Framework**) e 3 relacionamentos (**IS_TEAMMATE**, **HAS_EXPERTISE** e **REQUIRES**).
+Esse projeto consiste em 3 modelos (**Person**, **Expertise** e **Framework**) e 3 relacionamentos (**IS_TEAMMATE**, **HAS_EXPERTISE** e **REQUIRES_EXPERTISE**).
 
 Todos os modelos tem a propriedade **name**. Os relacionamentos não têm propriedades.
 
 As possibilidades são:
   - `(:Person)    -[:IS_TEAMMATE]->   (:Person)`
   - `(:Person)    -[:HAS_EXPERTISE]-> (:Expertise)`
-  - `(:Framework) -[:REQUIRES]->      (:Expertise)`
+  - `(:Framework) -[:REQUIRES_EXPERTISE]->      (:Expertise)`
 
 Então, um exemplo de ligação entre **Person** e **Framework** seria:
 
-  `(:Person) -[:HAS_EXPERTISE]-> (:Expertise) <-[:REQUIRES]- (:Framework)`
+  `(:Person) -[:HAS_EXPERTISE]-> (:Expertise) <-[:REQUIRES_EXPERTISE]- (:Framework)`
 
 ### Mais informações:
 - [Neo4j](https://neo4j.com/)
