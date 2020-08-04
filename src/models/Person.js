@@ -1,4 +1,6 @@
 const neo4j = require('../database/neo4j')
+const ModelNotFound = require('../exceptions/ModelNotFound')
+
 class Person {
   constructor ({ id, name }) {
     this.id = id
