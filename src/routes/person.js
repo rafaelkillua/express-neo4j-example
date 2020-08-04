@@ -5,5 +5,6 @@ const router = express.Router()
 router.post('/person', PersonController.create)
 router.get('/person', PersonController.find)
 router.get('/person/:id', PersonController.findById)
+router.patch('/person/:id', PersonController.update)
 
 module.exports = router

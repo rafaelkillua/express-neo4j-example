@@ -12,6 +12,18 @@ class PersonController {
     }
   }
 
+  async update (req, res) {
+    try {
+      const { id } = req.params
+      const person = await Person.findById(id)
+      await person.update(req.body)
+      return res.status(200).send(person)
+    } catch (error) {
+      console.error(error)
+      return res.status(error.status || 500).send(error)
+    }
+  }
+
   async find (req, res) {
     try {
       const { name } = req.query

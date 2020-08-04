@@ -12,6 +12,12 @@ class Person {
     this.id = (await neo4j.queryCreate(query, this))
   }
 
+  async update ({ name }) {
+    const query = `MATCH ( updatedPerson:Person ) WHERE ID(updatedPerson) = ${this.id} SET updatedPerson.name = $name RETURN updatedPerson`
+    const response = (await neo4j.queryUpdate(query, { name }))
+    this.name = response.name
+  }
+
   static findAll () {
     const query = 'MATCH (allPersons:Person) RETURN allPersons'
     return neo4j.queryFind(query, null, Person)
