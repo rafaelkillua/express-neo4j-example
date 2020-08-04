@@ -1,5 +1,5 @@
 const neo4j = require('../database/neo4j')
-const ModelNotFound = require('../exceptions/ModelNotFound')
+const ModelNotFoundError = require('../exceptions/ModelNotFoundError')
 
 class Person {
   constructor ({ id, name }) {
@@ -28,7 +28,7 @@ class Person {
       if (res.length > 0) {
         return res[0]
       } else {
-        throw new ModelNotFound('Uma pessoa com esse ID não foi encontrada')
+        throw new ModelNotFoundError('Uma pessoa com esse ID não foi encontrada', { id })
       }
     })
   }
