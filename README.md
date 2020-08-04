@@ -26,7 +26,9 @@ As possibilidades são:
   - `(:Person)    -[:HAS_EXPERTISE]-> (:Expertise)`
   - `(:Framework) -[:REQUIRES]->      (:Expertise)`
 
-Então, um exemplo de ligação entre **Person** e **Framework** seria: `(:Person) -[:HAS_EXPERTISE]-> (:Expertise) <-[:REQUIRES]- (:Framework)`
+Então, um exemplo de ligação entre **Person** e **Framework** seria:
+
+  `(:Person) -[:HAS_EXPERTISE]-> (:Expertise) <-[:REQUIRES]- (:Framework)`
 
 ### Mais informações:
 - [Neo4j](https://neo4j.com/)
