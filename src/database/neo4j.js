@@ -1,4 +1,6 @@
+const { v4: uuidv4 } = require('uuid')
 const neo4jDriver = require('neo4j-driver')
+const ModelNotFoundError = require('../exceptions/ModelNotFoundError')
 
 class Neo4j {
   constructor () {
@@ -24,15 +26,15 @@ class Neo4j {
   }
 
   queryCreate (query, params) {
-    return this.query(query, params).then(res => res[0]._fields[0].identity.low)
+    const id = uuidv4()
+    return this.query(query, { ...params, id }).then(res => {
+      if (!res[0]) throw new ModelNotFoundError('Não foi possível criar esse nó/relação', params)
+      return id
+    })
   }
 
   queryUpdate (query, params) {
     return this.query(query, params).then(res => res[0]._fields[0].properties)
-  }
-
-  queryDelete (query) {
-    return this.query(query)
   }
 
   queryFind (query, params, Model) {

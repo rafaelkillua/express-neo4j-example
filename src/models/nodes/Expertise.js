@@ -8,19 +8,19 @@ class Expertise {
   }
 
   async save () {
-    const query = 'CREATE ( newExpertise:Expertise { name: $name } ) RETURN newExpertise'
+    const query = 'CREATE ( newExpertise:Expertise { id: $id, name: $name } ) RETURN newExpertise'
     this.id = await neo4j.queryCreate(query, this)
   }
 
   async update ({ name }) {
-    const query = `MATCH ( updatedExpertise:Expertise ) WHERE ID(updatedExpertise) = ${this.id} SET updatedExpertise.name = $name RETURN updatedExpertise`
-    const response = await neo4j.queryUpdate(query, { name })
+    const query = 'MATCH ( updatedExpertise:Expertise ) WHERE updatedExpertise.id = $id SET updatedExpertise.name = $name RETURN updatedExpertise'
+    const response = await neo4j.queryUpdate(query, { id: this.id, name })
     this.name = response.name
   }
 
   async delete () {
-    const query = `MATCH ( deletedExpertise:Expertise ) WHERE ID(deletedExpertise) = ${this.id} DELETE deletedExpertise`
-    await neo4j.queryDelete(query)
+    const query = 'MATCH ( deletedExpertise:Expertise ) WHERE deletedExpertise.id = $id DELETE deletedExpertise'
+    await neo4j.query(query, { id: this.id })
   }
 
   static findAll () {
@@ -34,8 +34,8 @@ class Expertise {
   }
 
   static findById (id) {
-    const query = `MATCH (expertise:Expertise) WHERE ID(expertise) = ${id} RETURN expertise LIMIT 1`
-    return neo4j.queryFind(query, null, Expertise).then(res => {
+    const query = 'MATCH (expertise:Expertise) WHERE expertise.id = $id RETURN expertise LIMIT 1'
+    return neo4j.queryFind(query, { id }, Expertise).then(res => {
       if (res.length > 0) {
         return res[0]
       } else {

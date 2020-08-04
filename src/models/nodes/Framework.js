@@ -8,19 +8,19 @@ class Framework {
   }
 
   async save () {
-    const query = 'CREATE ( newFramework:Framework { name: $name } ) RETURN newFramework'
+    const query = 'CREATE ( newFramework:Framework { id: $id, name: $name } ) RETURN newFramework'
     this.id = await neo4j.queryCreate(query, this)
   }
 
   async update ({ name }) {
-    const query = `MATCH ( updatedFramework:Framework ) WHERE ID(updatedFramework) = ${this.id} SET updatedFramework.name = $name RETURN updatedFramework`
-    const response = await neo4j.queryUpdate(query, { name })
+    const query = 'MATCH ( updatedFramework:Framework ) WHERE updatedFramework.id = $id SET updatedFramework.name = $name RETURN updatedFramework'
+    const response = await neo4j.queryUpdate(query, { id: this.id, name })
     this.name = response.name
   }
 
   async delete () {
-    const query = `MATCH ( deletedFramework:Framework ) WHERE ID(deletedFramework) = ${this.id} DELETE deletedFramework`
-    await neo4j.queryDelete(query)
+    const query = 'MATCH ( deletedFramework:Framework ) WHERE deletedFramework.id = $id DELETE deletedFramework'
+    await neo4j.query(query, { id: this.id })
   }
 
   static findAll () {
@@ -34,8 +34,8 @@ class Framework {
   }
 
   static findById (id) {
-    const query = `MATCH (framework:Framework) WHERE ID(framework) = ${id} RETURN framework LIMIT 1`
-    return neo4j.queryFind(query, null, Framework).then(res => {
+    const query = 'MATCH (framework:Framework) WHERE framework.id = $id RETURN framework LIMIT 1'
+    return neo4j.queryFind(query, { id }, Framework).then(res => {
       if (res.length > 0) {
         return res[0]
       } else {

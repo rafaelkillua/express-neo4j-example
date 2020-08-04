@@ -8,19 +8,19 @@ class Person {
   }
 
   async save () {
-    const query = 'CREATE ( newPerson:Person { name: $name } ) RETURN newPerson'
+    const query = 'CREATE ( newPerson:Person { id: $id, name: $name } ) RETURN newPerson'
     this.id = await neo4j.queryCreate(query, this)
   }
 
   async update ({ name }) {
-    const query = `MATCH ( updatedPerson:Person ) WHERE ID(updatedPerson) = ${this.id} SET updatedPerson.name = $name RETURN updatedPerson`
-    const response = await neo4j.queryUpdate(query, { name })
+    const query = 'MATCH ( updatedPerson:Person ) WHERE updatedPerson.id = $id SET updatedPerson.name = $name RETURN updatedPerson'
+    const response = await neo4j.queryUpdate(query, { id: this.id, name })
     this.name = response.name
   }
 
   async delete () {
-    const query = `MATCH ( deletedPerson:Person ) WHERE ID(deletedPerson) = ${this.id} DELETE deletedPerson`
-    await neo4j.queryDelete(query)
+    const query = 'MATCH ( deletedPerson:Person ) WHERE deletedPerson.id = $id DELETE deletedPerson'
+    await neo4j.query(query, { id: this.id })
   }
 
   static findAll () {
@@ -34,8 +34,8 @@ class Person {
   }
 
   static findById (id) {
-    const query = `MATCH (person:Person) WHERE ID(person) = ${id} RETURN person LIMIT 1`
-    return neo4j.queryFind(query, null, Person).then(res => {
+    const query = 'MATCH (person:Person) WHERE person.id = $id RETURN person LIMIT 1'
+    return neo4j.queryFind(query, { id }, Person).then(res => {
       if (res.length > 0) {
         return res[0]
       } else {
