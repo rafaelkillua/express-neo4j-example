@@ -18,6 +18,11 @@ class Person {
     this.name = response.name
   }
 
+  async delete () {
+    const query = `MATCH ( deletedPerson:Person ) WHERE ID(deletedPerson) = ${this.id} DELETE deletedPerson`
+    await neo4j.queryDelete(query)
+  }
+
   static findAll () {
     const query = 'MATCH (allPersons:Person) RETURN allPersons'
     return neo4j.queryFind(query, null, Person)

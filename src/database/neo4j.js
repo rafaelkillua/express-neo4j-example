@@ -31,6 +31,10 @@ class Neo4j {
     return this.query(query, params).then(res => res[0]._fields[0].properties)
   }
 
+  queryDelete (query) {
+    return this.query(query)
+  }
+
   queryFind (query, params, Model) {
     return this.query(query, params).then(res => res.map(value => value._fields.map(field => new Model({ id: field.identity.low, ...field.properties }))).flat())
   }
