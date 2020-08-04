@@ -5,6 +5,7 @@ require('dotenv').config()
 
 const indexRouter = require('./src/routes/index')
 const personRouter = require('./src/routes/person')
+const expertiseRouter = require('./src/routes/expertise')
 
 const app = express()
 
@@ -15,5 +16,6 @@ app.use(cookieParser())
 
 app.use('/', indexRouter)
 app.use('/', personRouter)
+app.use('/', expertiseRouter)
 
 module.exports = app
