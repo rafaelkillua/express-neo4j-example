@@ -1,5 +1,5 @@
-const neo4j = require('../database/neo4j')
-const ModelNotFoundError = require('../exceptions/ModelNotFoundError')
+const neo4j = require('../../database/neo4j')
+const ModelNotFoundError = require('../../exceptions/ModelNotFoundError')
 
 class Person {
   constructor ({ id, name }) {

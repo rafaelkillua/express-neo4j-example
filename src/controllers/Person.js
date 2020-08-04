@@ -1,4 +1,4 @@
-const Person = require('../models/Person')
+const Person = require('../models/nodes/Person')
 
 class PersonController {
   async create (req, res) {

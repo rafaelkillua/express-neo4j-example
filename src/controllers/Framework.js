@@ -1,4 +1,4 @@
-const Framework = require('../models/Framework')
+const Framework = require('../models/nodes/Framework')
 
 class FrameworkController {
   async create (req, res) {

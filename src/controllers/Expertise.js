@@ -1,4 +1,4 @@
-const Expertise = require('../models/Expertise')
+const Expertise = require('../models/nodes/Expertise')
 
 class ExpertiseController {
   async create (req, res) {
