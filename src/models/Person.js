@@ -10,6 +10,26 @@ class Person {
     this.id = (await neo4j.queryCreate(query, this))
   }
 
+  static findAll () {
+    const query = 'MATCH (allPersons:Person) RETURN allPersons'
+    return neo4j.queryFind(query, null, Person)
+  }
+
+  static findByName (name) {
+    const query = 'MATCH (allPersons:Person) WHERE allPersons.name CONTAINS $name RETURN allPersons'
+    return neo4j.queryFind(query, { name }, Person)
+  }
+
+  static findById (id) {
+    const query = `MATCH (person:Person) WHERE ID(person) = ${id} RETURN person LIMIT 1`
+    return neo4j.queryFind(query, null, Person).then(res => {
+      if (res.length > 0) {
+        return res[0]
+      } else {
+        throw new ModelNotFound('Uma pessoa com esse ID não foi encontrada')
+      }
+    })
+  }
 }
 
 module.exports = Person
