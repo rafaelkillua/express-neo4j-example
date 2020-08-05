@@ -34,11 +34,17 @@ class Neo4j {
   }
 
   queryUpdate (query, params) {
-    return this.query(query, params).then(res => res[0]._fields[0].properties)
+    return this.query(query, params).then(res => {
+      const { keys } = res[0]
+      return res[0].get(keys[0]).properties
+    })
   }
 
   queryFind (query, params, Model) {
-    return this.query(query, params).then(res => res.map(value => value._fields.map(field => new Model({ id: field.identity.low, ...field.properties }))).flat())
+    return this.query(query, params).then(res => res.map(value => {
+      const { keys } = value
+      return new Model(value.get(keys[0]).properties)
+    }))
   }
 
   queryCreateRelationship (query, params, isDoubleSided) {
