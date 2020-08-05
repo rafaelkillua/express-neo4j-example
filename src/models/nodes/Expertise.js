@@ -1,5 +1,6 @@
 const neo4j = require('../../database/neo4j')
 const ModelNotFoundError = require('../../exceptions/ModelNotFoundError')
+const Person = require('./Person')
 
 class Expertise {
   constructor ({ id, name }) {
@@ -42,6 +43,11 @@ class Expertise {
         throw new ModelNotFoundError('Uma expertise com esse ID não foi encontrada', { id })
       }
     })
+  }
+
+  getWhoHas () {
+    const query = 'MATCH ( me:Expertise ) <-[ :HAS_EXPERTISE ]- ( people:Person ) WHERE me.id = $id RETURN DISTINCT people'
+    return neo4j.queryFind(query, this, Person)
   }
 }
 
