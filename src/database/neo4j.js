@@ -40,6 +40,27 @@ class Neo4j {
   queryFind (query, params, Model) {
     return this.query(query, params).then(res => res.map(value => value._fields.map(field => new Model({ id: field.identity.low, ...field.properties }))).flat())
   }
+
+  queryCreateRelationship (query, params, isDoubleSided) {
+    if (isDoubleSided) {
+      const id2 = uuidv4()
+      params.id2 = id2
+    }
+    return this.queryCreate(query, params)
+  }
+
+  queryFindRelationship (query, params) {
+    return this.query(query, params).then(res => res.map(value => {
+      const { keys } = value
+      const response = {}
+
+      keys.forEach(key => {
+        response[key] = value.get(key)
+      })
+
+      return response
+    }))
+  }
 }
 
 const neo4j = new Neo4j()

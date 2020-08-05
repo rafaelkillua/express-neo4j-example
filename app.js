@@ -7,6 +7,7 @@ const indexRouter = require('./src/routes/index')
 const personRouter = require('./src/routes/person')
 const expertiseRouter = require('./src/routes/expertise')
 const frameworkRouter = require('./src/routes/framework')
+const isTeammateRouter = require('./src/routes/isTeammate')
 
 const app = express()
 
@@ -19,5 +20,6 @@ app.use('/', indexRouter)
 app.use('/', personRouter)
 app.use('/', expertiseRouter)
 app.use('/', frameworkRouter)
+app.use('/', isTeammateRouter)
 
 module.exports = app
