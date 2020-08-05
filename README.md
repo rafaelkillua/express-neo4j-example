@@ -13,7 +13,7 @@ Caso queira mais informações, há uma **apresentação de slides** (link a def
 - Crie um arquivo `.env` baseado no `.env.example`. Se tiver usado o código acima, a senha do banco será **graph**.
 - Rode `yarn` ou `npm install`.
 - Rode `yarn dev` ou `npm run dev` para rodar o app Express em modo de desenvolvimento.
-- **OPCIONAL**: Baixe o *json* do **Insomnia** (link a definir) com algumas rotas para facilitar o desenvolvimento.
+- **OPCIONAL**: Baixe o [*json* do **Insomnia**](https://github.com/rafaelkillua/express-neo4j-example/raw/master/ExpressNeo4jExample_Insomnia_20200805.json) com algumas rotas para facilitar o desenvolvimento.
 
 ### Modelagem do projeto
 
