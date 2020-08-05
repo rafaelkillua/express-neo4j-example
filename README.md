@@ -35,6 +35,8 @@ Então, um exemplo de ligação entre **Person** e **Framework** seria:
 - [Neo4j para desenvolvedores](https://neo4j.com/developer/)
 - [Neo4j com Docker](https://neo4j.com/developer/docker-run-neo4j/)
 - [Driver Javascript para Neo4j](https://github.com/neo4j/neo4j-javascript-driver)
+- [OGM (Object Graph Mapping) em Java](https://github.com/neo4j/neo4j-ogm)
+- [OGM (Object Graph Mapping) em Javascript](https://github.com/adam-cowley/neode)
 - [Manual do **Cypher**](https://neo4j.com/docs/cypher-manual/4.1/)
 - [Cursos online **grátis** oficial Neo4j (com certificado)](https://neo4j.com/graphacademy/online-training/)
 - [Sandbox do SGBD online do Neo4j](https://neo4j.com/sandbox/)
