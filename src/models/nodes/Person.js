@@ -43,6 +43,11 @@ class Person {
       }
     })
   }
+
+  getTeammates () {
+    const query = 'MATCH (me:Person)-[:IS_TEAMMATE]-(person:Person) WHERE me.id = $id RETURN DISTINCT person'
+    return neo4j.queryFind(query, this, Person)
+  }
 }
 
 module.exports = Person
