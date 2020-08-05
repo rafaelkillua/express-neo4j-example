@@ -1,8 +1,8 @@
 ## Introdução a Neo4j e Express - Exemplos de uso e *queries* básicas
 
-Nesse repositório você encontrará alguns exemplos de queries na linguagem ***Cipher*** do **Neo4j** de um modo bem inicial e um exemplo básico de como conectar ao banco de dados Neo4j usando o driver padrão Javascript.
+Nesse repositório você encontrará alguns exemplos de queries na linguagem ***Cypher*** do **Neo4j** de um modo bem inicial e um exemplo básico de como conectar ao banco de dados Neo4j usando o driver padrão Javascript.
 
-Caso queira mais informações, há uma **apresentação de slides** (link a definir) explicando um pouco da história dos *graph databases*, o que são **grafos**, seus casos de uso e exemplos da linguagem ***Cipher***.
+Caso queira mais informações, há uma **apresentação de slides** (link a definir) explicando um pouco da história dos *graph databases*, o que são **grafos**, seus casos de uso e exemplos da linguagem ***Cypher***.
 
 ### Quick start
 
@@ -35,5 +35,6 @@ Então, um exemplo de ligação entre **Person** e **Framework** seria:
 - [Neo4j para desenvolvedores](https://neo4j.com/developer/)
 - [Neo4j com Docker](https://neo4j.com/developer/docker-run-neo4j/)
 - [Driver Javascript para Neo4j](https://github.com/neo4j/neo4j-javascript-driver)
+- [Manual do **Cypher**](https://neo4j.com/docs/cypher-manual/4.1/)
 - [Cursos online **grátis** oficial Neo4j (com certificado)](https://neo4j.com/graphacademy/online-training/)
 - [Sandbox do SGBD online do Neo4j](https://neo4j.com/sandbox/)
