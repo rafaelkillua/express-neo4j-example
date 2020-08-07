@@ -40,6 +40,7 @@ Então, um exemplo de ligação entre **Person** e **Framework** seria:
 - [Manual do **Cypher**](https://neo4j.com/docs/cypher-manual/4.1/)
 - [Cursos online **grátis** oficial Neo4j (com certificado)](https://neo4j.com/graphacademy/online-training/)
 - [Sandbox do SGBD online do Neo4j](https://neo4j.com/sandbox/)
+- [Nota do Facebook sobre Graph DBs](https://www.facebook.com/notes/facebook-engineering/tao-the-power-of-the-graph/10151525983993920/)
 
 ### Contribuições
 Quaisquer PRs serão bem vindos!
