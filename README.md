@@ -2,7 +2,7 @@
 
 Nesse repositório você encontrará alguns exemplos de queries na linguagem ***Cypher*** do **Neo4j** de um modo bem inicial e um exemplo básico de como conectar ao banco de dados Neo4j usando o driver padrão Javascript.
 
-Caso queira mais informações, há uma **apresentação de slides** (link a definir) explicando um pouco da história dos *graph databases*, o que são **grafos**, seus casos de uso e exemplos da linguagem ***Cypher***.
+Caso queira mais informações, há uma [**apresentação de slides**](https://github.com/rafaelkillua/express-neo4j-example/blob/master/Introdu%C3%A7%C3%A3o%20a%20Graph%20DBs.pdf) explicando um pouco da história dos *graph databases*, o que são **grafos**, seus casos de uso e exemplos da linguagem ***Cypher***.
 
 ### Quick start
 
